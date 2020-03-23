@@ -19,7 +19,8 @@ class Pokemon
     sql = <<-SQL
       SELECT * FROM pokemon WHERE id = ?
     SQL
-    self.db.execute(sql, id)
+    row = self.db.execute(sql, id)[0]
+    self.new(row[0],row[1],row[2],row[3])
   end
   
 end
